@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Sumbangan Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            padding-top: 80px; /* Add space for fixed header */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fix the header at the top */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensure header stays on top of other elements */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Space between logo and navigation links */
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .auth-buttons a {
+            margin-left: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-buttons a.login {
+            color: #007bff;
+            border: 1px solid #007bff;
+            background-color: #fff;
+        }
+
+        .auth-buttons a.register {
+            color: #fff;
+            background-color: #007bff;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            padding: 40px;
+            background-color: #f1f5f9; /* Light background color */
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .hero-image {
+            max-width: 550px;
+            margin-right: 20px; /* Space between image and text */
+            flex-shrink: 0; /* Prevent the image from shrinking */
+        }
+
+        .hero-text {
+            max-width: 600px;
+            flex-grow: 1; /* Allow hero-text to take up more space */
+        }
+
+        .hero-text h1 {
+            font-size: 31px; /* Increase font size for header */
+            color: #333;
+            font-weight: bold;
+            margin: 0;
+            text-align: justify; /* Justify header text */
+        }
+
+        .hero-text p {
+            font-size: 23px; /* Increase font size for paragraph */
+            color: #555;
+            margin-top: 10px;
+            text-align: justify; /* Justify paragraph text */
+        }
+
+        .info-button {
+            display: inline-block;
+            margin-top: 23px;
+            padding: 10px 24px;
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .vision, .mission {
+            background-color: #e6f3ff;
+            padding: 40px 20px;
+        }
+
+        .mission ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mission li {
+            color: #666;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="{{ url_for('static', filename='img/logocapstone.png') }}" alt="Logo">
+            <nav>
+                <a href="#home">Home</a>
+                <a href="{{ url_for('donasi') }}">Donasi</a>
+                <a href="#campaign">Campaign</a>
+            </nav>
+        </div>
+        <div class="auth-buttons">
+            <a href="{{ url_for('login') }}" class="login">Login</a>
+            <a href="{{ url_for('register') }}" class="register">Daftar</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <img src="{{ url_for('static', filename='img/logocapstone.png') }}" alt="Hero Image" class="hero-image">
+        <div class="hero-text">
+            <h1>Selamat datang di Sistem Informasi Sumbangan Barang</h1>
+            <p>Platform yang menghubungkan para donatur dengan mereka yang membutuhkan. Kami menghubungkan penyumbang dengan penerima barang yang membutuhkan secara efisien. Bersama, kita dapat menciptakan dampak sosial yang lebih besar!</p>
+            <a href="#info" class="info-button">Info Selengkapnya</a>
+        </div>
+    </section>
+
+    <section class="section" id="importance">
+        <h2>Mengapa Sistem Ini Penting?</h2>
+        <p>Dengan semakin banyaknya barang yang tidak terpakai, banyak individu atau organisasi yang membutuhkan bantuan dalam bentuk barang bekas layak pakai. Sistem Informasi Sumbangan Barang mempermudah proses donasi, memastikan barang-barang yang masih berfungsi dapat sampai kepada orang yang membutuhkan.</p>
+    </section>
+
+    <section class="vision" id="vision">
+        <h2>Visi</h2>
+        <p>Menciptakan platform digital yang dapat menjembatani antara mereka yang memiliki barang layak pakai dengan mereka yang membutuhkan, untuk mendukung kesejahteraan dan pemerataan bantuan di seluruh wilayah.</p>
+    </section>
+
+    <section class="mission" id="mission">
+        <h2>Misi Kami</h2>
+        <ul>
+            <li>1. Menyediakan layanan yang memudahkan masyarakat untuk berbagi barang yang tidak terpakai namun masih berguna.</li>
+            <li>2. Menyusun sistem distribusi yang adil dan tepat sasaran.</li>
+            <li>3. Menjalin kerja sama dengan berbagai lembaga sosial, yayasan, dan komunitas di berbagai daerah.</li>
+            <li>4. Memberikan akses yang transparan dan akuntabel terhadap proses sumbangan dan distribusi barang.</li>
+        </ul>
+    </section>
+
+</body>
+</html>

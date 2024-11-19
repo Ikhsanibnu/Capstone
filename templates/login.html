@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f8fc;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 800px;
+            height: 500px;
+        }
+
+        .logo {
+            background-color: #f3f8fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            padding: 20px;
+        }
+
+        .logo img {
+            width: 250px;
+            height: 250px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            width: 50%;
+        }
+
+        .form-container h2 {
+            font-size: 32px;
+            color: #333;
+            margin: 0;
+        }
+
+        .form-container p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #87c7ff;
+            border-radius: 30px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .form-container input::placeholder {
+            color: #87c7ff;
+        }
+
+        .form-container button {
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            background-color: #87c7ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #5aaef7;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .register-link a {
+            color: #87c7ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logocapstone.png') }}" alt="Logo">
+        </div>
+        <div class="form-container">
+            <h2>Selamat Datang,</h2>
+            <p>Login sekarang untuk melanjutkan</p>
+            <form method="POST" action="{{ url_for('login') }}">
+                <label for="kontak">Kontak:</label>
+                <input type="text" id="kontak" name="kontak" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+            <div class="register-link">
+                Belum mempunyai akun? <a href="{{ url_for('register') }}">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

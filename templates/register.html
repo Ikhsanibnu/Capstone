@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran</title>
+    <style>
+        /* Center the entire page and set up general body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f8fc;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Container styling to center and organize elements */
+        .container {
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+            height: 500px;
+        }
+        
+        /* Styling for the logo section */
+        .logo {
+            background-color: #f3f8fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            padding: 20px;
+        }
+        
+        .logo img {
+            width: 250px;
+            height: 250px;
+        }
+        
+        /* Styling for the form container */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            width: 50%;
+        }
+        
+        .form-container h2 {
+            font-size: 32px;
+            color: #333;
+            margin: 0;
+        }
+        
+        .form-container p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #87c7ff;
+            border-radius: 30px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .form-container input::placeholder {
+            color: #87c7ff;
+        }
+        
+        .form-container button {
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            background-color: #87c7ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .form-container button:hover {
+            background-color: #5aaef7;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .login-link a {
+            color: #87c7ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logocapstone.png') }}" alt="Logo">
+        </div>
+        <div class="form-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-message">
+                  {% for category, message in messages %}
+                    <p>{{ message }}</p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+            
+            <form action="{{ url_for('register') }}" method="POST">
+                <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" required>
+                <input type="text" name="alamat" placeholder="Alamat" required>
+                <input type="email" name="kontak" placeholder="Nomor Telepon/Email" required>
+                <select name="jenis_pengguna" required>
+                    <option value="" disabled selected>Jenis Pengguna</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">Pengguna</option>
+                </select>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <div class="login-link">
+                Sudah mempunyai akun? <a href="{{ url_for('login') }}">Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
